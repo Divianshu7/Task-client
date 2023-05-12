@@ -10,11 +10,7 @@ function Login() {
         username: '',
         password: '',
     })
-    useEffect(() => {
-        if (localStorage.getItem('chat-app-user')) {
-            history('/')
-        }
-    }, [])
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (handleValidation()) {
@@ -22,9 +18,9 @@ function Login() {
             try {
                 const { data } = await login({ username, password })
                 if (data.status === true) {
-                    localStorage.setItem('chat-app-user', JSON.stringify(data.user))
-                    history('/')
+                    localStorage.setItem('task-user', JSON.stringify(data.user))
                     console.log(data)
+                    history('/')
                 } else {
                     toast.error(data.msg)
                 }

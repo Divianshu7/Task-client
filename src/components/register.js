@@ -31,8 +31,7 @@ function Register() {
             try {
                 const { data } = await register({ username, password, email, mobile })
                 if (data.status === true) {
-                    localStorage.setItem('task-user', JSON.stringify(data.user))
-                    // history('/')
+                    history('/login')
                 } else {
                     toast.error(data.msg)
                 }
